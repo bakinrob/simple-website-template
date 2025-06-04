@@ -3,135 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Quran Reminder</title>
     <style>
-        /* Global Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            color: #333;
+            background-color: #f0fff4;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsLW9wYWNpdHk9IjAuMDUiPjx0ZXh0IHg9IjAiIHk9IjQwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDAiIHRyYW5zZm9ybT0icm90YXRlKC00NSkiPtin2YTZhNmHPC90ZXh0Pjwvc3ZnPg==');
+            background-repeat: repeat;
+            background-size: 200px 200px;
         }
         header {
-            background-color: #333;
+            background-color: #075e54;
             color: #fff;
-            padding: 10px 0;
-            position: fixed;
+            position: sticky;
             top: 0;
             width: 100%;
-            z-index: 1000;
+            z-index: 100;
         }
-        nav {
+        .navbar {
             max-width: 1000px;
             margin: 0 auto;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
         }
-        nav a {
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
             color: #fff;
             text-decoration: none;
-            margin-left: 15px;
-            transition: color 0.3s ease;
+            font-weight: bold;
         }
-        nav a:hover {
-            color: #f0f0f0;
+        .nav-links a:hover {
+            text-decoration: underline;
         }
         main {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 80px 20px 40px;
+            padding: 60px 20px;
         }
         .hero {
             text-align: center;
-            padding: 80px 20px;
         }
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
+        #verse-container {
+            background-color: rgba(255,255,255,0.8);
+            margin: 20px auto;
             padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            max-width: 600px;
+        }
+        #verse-ar {
+            font-size: 1.6em;
+            margin: 0 0 10px;
+            direction: rtl;
         }
         form {
             display: flex;
             flex-direction: column;
             gap: 10px;
+            max-width: 300px;
+            margin: 0 auto;
         }
-        input, textarea {
+        input, textarea, button {
+            font-size: 1em;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            font-size: 1rem;
         }
-        input[type="submit"] {
-            background-color: #333;
+        button {
+            background-color: #075e54;
             color: #fff;
-            cursor: pointer;
             border: none;
-            transition: background-color 0.3s ease;
+            cursor: pointer;
         }
-        input[type="submit"]:hover {
-            background-color: #444;
+        button:hover {
+            background-color: #0a7a66;
+        }
+        section {
+            margin-top: 40px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #075e54;
+            color: #fff;
         }
         @media (max-width: 600px) {
-            nav {
+            .nav-links {
                 flex-direction: column;
                 align-items: flex-start;
-            }
-            nav a {
-                margin: 5px 0;
             }
         }
     </style>
 </head>
 <body>
-<header>
-    <nav>
-        <div class="logo">My Portfolio</div>
-        <div class="links">
-            <a href="#home">Home</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
-</header>
-<main>
-    <section id="home" class="hero">
-        <h1>Welcome to My Portfolio</h1>
-        <p>Hello! I'm Your Name, a brief introduction goes here.</p>
-    </section>
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects">
-            <div class="card">
-                <h3>Project One</h3>
-                <p>A short description of the first project.</p>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Quran Reminder</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="hero">
+            <h1>Daily Quran Verse</h1>
+            <div id="verse-container">
+                <p id="verse-ar"></p>
+                <p id="verse-en"></p>
             </div>
-            <div class="card">
-                <h3>Project Two</h3>
-                <p>A short description of the second project.</p>
-            </div>
-            <div class="card">
-                <h3>Project Three</h3>
-                <p>A short description of the third project.</p>
-            </div>
-        </div>
-    </section>
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <form>
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea rows="5" placeholder="Your Message" required></textarea>
-            <input type="submit" value="Send">
-        </form>
-    </section>
-</main>
+            <form id="subscribe-form">
+                <label for="email">Get Daily Reminder by Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+        <section id="about">
+            <h2>About</h2>
+            <p>This simple website shares a short verse each day to encourage reflection on the Quran.</p>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <form id="contact-form">
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea rows="4" placeholder="Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Quran Reminder</p>
+    </footer>
+    <script>
+        const verses = [
+            {arabic: 'وَقُلْ رَبِّ زِدْنِي عِلْمًا', translation: 'And say: My Lord, increase me in knowledge. (20:114)'},
+            {arabic: 'إِنَّ مَعَ الْعُسْرِ يُسْرًا', translation: 'Indeed, with hardship comes ease. (94:6)'},
+            {arabic: 'إِنَّ اللَّهَ مَعَ الصَّابِرِينَ', translation: 'Indeed, Allah is with the patient. (2:153)'},
+            {arabic: 'فَاذْكُرُونِي أَذْكُرْكُمْ', translation: 'So remember Me; I will remember you. (2:152)'}
+        ];
+        function showDailyVerse() {
+            const index = new Date().getDate() % verses.length;
+            document.getElementById('verse-ar').textContent = verses[index].arabic;
+            document.getElementById('verse-en').textContent = verses[index].translation;
+        }
+        showDailyVerse();
+        document.getElementById('subscribe-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing!');
+            this.reset();
+        });
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message!');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
